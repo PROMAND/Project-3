@@ -1,22 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp"
-                android:orientation="vertical"
-                >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:orientation="vertical"
+    >
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="200dp"
+    <fragment
         android:id="@+id/map"
-        android:src="@drawable/mapmaker_157176_what_is_mapmaker_satellite_view_en"
-        android:layout_alignParentTop="true" />
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
 
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/myList"
-        android:layout_below="@+id/map" />
+        android:layout_below="@+id/mapView" />
 
 </LinearLayout>
 

@@ -44,7 +44,7 @@ public class ReportActivity extends Activity {
                 //need this to prompts email client only
                 email.setType("message/rfc822");
 
-                startActivity(Intent.createChooser(email, "Choose an Email client :"));
+                startActivity(Intent.createChooser(email, "Choose an E-mail client :"));
 
             }
         });
