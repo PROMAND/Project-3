@@ -12,18 +12,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ListAdapter extends ArrayAdapter<String> {
     private final Context context;
     private final String[] values;
     private final int[] stars;
+    private final boolean[] hoursfilter;
+    private final boolean[] moneyfilter;
+    private final boolean[] invalidfilter;
+    private final boolean[] babyfilter;
+    private final boolean[] commentfilter;
+    private final boolean[] photofilter;
 
-    public ListAdapter(Context context, String[] values, int[] stars) {
+    public ListAdapter(Context context, String[] values, int[] stars, boolean[] hoursfilter, boolean[] moneyfilter,
+                       boolean[] invalidfilter, boolean[] babyfilter, boolean[] commentfilter, boolean[] photofilter) {
         super(context, R.layout.list, values);
         this.context = context;
         this.values = values;
         this.stars = stars;
+        this.hoursfilter = hoursfilter;
+        this.moneyfilter = moneyfilter;
+        this.invalidfilter = invalidfilter;
+        this.babyfilter = babyfilter;
+        this.commentfilter = commentfilter;
+        this.photofilter = photofilter;
     }
 
     @Override
@@ -42,6 +57,14 @@ public class ListAdapter extends ArrayAdapter<String> {
         ImageView star3 = (ImageView) rowView.findViewById(R.id.starempty3);
         ImageView star4 = (ImageView) rowView.findViewById(R.id.starempty4);
         ImageView star5 = (ImageView) rowView.findViewById(R.id.starempty5);
+        ImageView hour = (ImageView) rowView.findViewById(R.id.hour);
+        ImageView euro = (ImageView) rowView.findViewById(R.id.euro);
+        ImageView invalid = (ImageView) rowView.findViewById(R.id.invalid);
+        ImageView baby = (ImageView) rowView.findViewById(R.id.baby);
+        ImageView comment = (ImageView) rowView.findViewById(R.id.comment);
+        ImageView camera = (ImageView) rowView.findViewById(R.id.camera);
+        ImageView blocker = (ImageView) rowView.findViewById(R.id.hiddenFilterController);
+
 
         textView.setText(values[position]);
 
@@ -50,42 +73,43 @@ public class ListAdapter extends ArrayAdapter<String> {
 
 
         if(stars[position] == 1) {
-            star.setImageResource(R.drawable.star);
-            star2.setImageResource(R.drawable.starempty);
-            star3.setImageResource(R.drawable.starempty);
-            star4.setImageResource(R.drawable.starempty);
-            star5.setImageResource(R.drawable.starempty);
+            star.setImageResource(R.drawable.star3);
+            star2.setImageResource(R.drawable.emptystar2);
+            star3.setImageResource(R.drawable.emptystar2);
+            star4.setImageResource(R.drawable.emptystar2);
+            star5.setImageResource(R.drawable.emptystar2);
         } else if (stars[position] == 2) {
-            star.setImageResource(R.drawable.star);
-            star2.setImageResource(R.drawable.star);
-            star3.setImageResource(R.drawable.starempty);
-            star4.setImageResource(R.drawable.starempty);
-            star5.setImageResource(R.drawable.starempty);
+            star.setImageResource(R.drawable.star3);
+            star2.setImageResource(R.drawable.star3);
+            star3.setImageResource(R.drawable.emptystar2);
+            star4.setImageResource(R.drawable.emptystar2);
+            star5.setImageResource(R.drawable.emptystar2);
         } else if(stars[position] == 3) {
-            star.setImageResource(R.drawable.star);
-            star2.setImageResource(R.drawable.star);
-            star3.setImageResource(R.drawable.star);
-            star4.setImageResource(R.drawable.starempty);
-            star5.setImageResource(R.drawable.starempty);
+            star.setImageResource(R.drawable.star3);
+            star2.setImageResource(R.drawable.star3);
+            star3.setImageResource(R.drawable.star3);
+            star4.setImageResource(R.drawable.emptystar2);
+            star5.setImageResource(R.drawable.emptystar2);
         } else if(stars[position] == 4) {
-            star.setImageResource(R.drawable.star);
-            star2.setImageResource(R.drawable.star);
-            star3.setImageResource(R.drawable.star);
-            star4.setImageResource(R.drawable.star);
-            star5.setImageResource(R.drawable.starempty);
+            star.setImageResource(R.drawable.star3);
+            star2.setImageResource(R.drawable.star3);
+            star3.setImageResource(R.drawable.star3);
+            star4.setImageResource(R.drawable.star3);
+            star5.setImageResource(R.drawable.emptystar2);
         } else if(stars[position] == 5) {
-            star.setImageResource(R.drawable.star);
-            star2.setImageResource(R.drawable.star);
-            star3.setImageResource(R.drawable.star);
-            star4.setImageResource(R.drawable.star);
-            star5.setImageResource(R.drawable.star);
+            star.setImageResource(R.drawable.star3);
+            star2.setImageResource(R.drawable.star3);
+            star3.setImageResource(R.drawable.star3);
+            star4.setImageResource(R.drawable.star3);
+            star5.setImageResource(R.drawable.star3);
         }  else {
-            star.setImageResource(R.drawable.starempty);
-            star2.setImageResource(R.drawable.starempty);
-            star3.setImageResource(R.drawable.starempty);
-            star4.setImageResource(R.drawable.starempty);
-            star5.setImageResource(R.drawable.starempty);
+            star.setImageResource(R.drawable.emptystar2);
+            star2.setImageResource(R.drawable.emptystar2);
+            star3.setImageResource(R.drawable.emptystar2);
+            star4.setImageResource(R.drawable.emptystar2);
+            star5.setImageResource(R.drawable.emptystar2);
         }
+
 
 
 
