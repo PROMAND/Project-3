@@ -50,8 +50,10 @@
 
     <Button
         android:id="@+id/buttonSend"
-        android:layout_width="fill_parent"
+        android:layout_width="200"
         android:layout_height="wrap_content"
+        android:drawableRight="@drawable/satelite"
+        android:layout_gravity="center"
         android:text="Send" />
 
 </LinearLayout>
