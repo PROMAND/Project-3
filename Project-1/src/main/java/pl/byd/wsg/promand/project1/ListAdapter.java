@@ -4,16 +4,12 @@ package pl.byd.wsg.promand.project1;
  * Created by Tommy on 13.3.2014.
  */
 
-import pl.byd.wsg.promand.project1.R;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ListAdapter extends ArrayAdapter<String> {
