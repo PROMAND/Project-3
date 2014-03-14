@@ -3,6 +3,7 @@ package pl.byd.wsg.promand.project1;
 /**
  * Created by Tommy on 13.3.2014.
  */
+
 import pl.byd.wsg.promand.project1.R;
 
 import android.content.Context;
