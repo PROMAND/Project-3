@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -18,7 +21,6 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
