@@ -134,6 +134,37 @@ public class ListAdapter extends ArrayAdapter<String> {
             number.setImageResource(R.drawable.number10);
         }
 
+        if ((hoursfilter[position]) == true) {
+            hour.setImageResource(R.drawable.hoursbetter);
+        } else {
+            hour.setImageResource(R.drawable.hourscancelled);
+        }
+        if ((moneyfilter[position]) == true) {
+            euro.setImageResource(R.drawable.euro);
+        } else {
+            euro.setImageResource(R.drawable.eurocancelled);
+        }
+        if ((invalidfilter[position]) == true) {
+            invalid.setImageResource(R.drawable.invalid);
+        } else {
+            invalid.setImageResource(R.drawable.invalidcancelled);
+        }
+        if ((babyfilter[position]) == true) {
+            baby.setImageResource(R.drawable.baby);
+        } else {
+            baby.setImageResource(R.drawable.babycancelled);
+        }
+        if ((commentfilter[position]) == true) {
+           comment.setImageResource(R.drawable.comment);
+        } else {
+            comment.setImageResource(R.drawable.commentcancelled);
+        }
+        if ((photofilter[position]) == true) {
+            camera.setImageResource(R.drawable.camera);
+        } else {
+            camera.setImageResource(R.drawable.cameracancelled);
+        }
+
 
 
         return rowView;
