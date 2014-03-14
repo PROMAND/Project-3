@@ -1,5 +1,6 @@
 package pl.byd.wsg.promand.project1;
 
+import pl.byd.wsg.promand.project1.R;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import pl.byd.wsg.promand.project1.R;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -22,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
