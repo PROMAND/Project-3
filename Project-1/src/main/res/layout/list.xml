@@ -15,13 +15,15 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:src="@drawable/ic_launcher"></ImageView>
+        android:src="@drawable/ic_launcher">
+
+        </ImageView>
 
     <TextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address"
+        android:text="@string/BigAddress"
         android:textSize="15sp"
         android:layout_alignTop="@+id/number"
         android:layout_toRightOf="@+id/number"
@@ -37,7 +39,9 @@
         android:src="@drawable/emptystar2"
         android:layout_alignLeft="@+id/address"
         android:layout_below="@+id/address"
-        android:layout_marginTop="3dp"></ImageView>
+        android:layout_marginTop="3dp">
+
+        </ImageView>
 
     <ImageView
         android:id="@+id/starempty2"
@@ -46,7 +50,9 @@
         android:layout_alignTop="@+id/starempty"
         android:layout_toRightOf="@+id/starempty"
         android:layout_marginLeft="3dp"
-        android:src="@drawable/emptystar2"></ImageView>
+        android:src="@drawable/emptystar2">
+
+        </ImageView>
 
     <ImageView
         android:id="@+id/starempty3"
@@ -55,7 +61,9 @@
         android:layout_alignTop="@+id/starempty2"
         android:layout_toRightOf="@+id/starempty2"
         android:layout_marginLeft="3dp"
-        android:src="@drawable/emptystar2"></ImageView>
+        android:src="@drawable/emptystar2">
+
+        </ImageView>
 
     <ImageView
         android:id="@+id/starempty4"
@@ -64,7 +72,9 @@
         android:layout_alignTop="@+id/starempty3"
         android:layout_toRightOf="@+id/starempty3"
         android:layout_marginLeft="3dp"
-        android:src="@drawable/emptystar2"></ImageView>
+        android:src="@drawable/emptystar2">
+
+        </ImageView>
 
     <ImageView
         android:id="@+id/starempty5"
@@ -73,7 +83,9 @@
         android:layout_alignTop="@+id/starempty4"
         android:layout_toRightOf="@+id/starempty4"
         android:layout_marginLeft="3dp"
-        android:src="@drawable/emptystar2"></ImageView>
+        android:src="@drawable/emptystar2">
+
+        </ImageView>
 
     <ImageView
         android:id="@+id/arrow"
@@ -81,7 +93,9 @@
         android:layout_height="48dp"
         android:src="@drawable/arrowright"
         android:layout_below="@+id/address"
-        android:layout_alignParentRight="true"></ImageView>
+        android:layout_alignParentRight="true">
+
+        </ImageView>
 
     <ImageView
         android:layout_width="28dp"

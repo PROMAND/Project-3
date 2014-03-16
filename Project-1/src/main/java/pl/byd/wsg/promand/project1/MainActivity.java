@@ -1,29 +1,28 @@
 package pl.byd.wsg.promand.project1;
 
-import pl.byd.wsg.promand.project1.R;
+
 import android.support.v7.app.ActionBarActivity;
-import android.app.Activity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.widget.Button;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-import pl.byd.wsg.promand.project1.R;
-import com.google.android.gms.maps.GoogleMap;
-
-
+import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    Button addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        addListenerOnButton();
     }
 
 
@@ -45,5 +44,20 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addListenerOnButton() {
+        final Context context = this;
+        addButton = (Button) findViewById(R.id.addButton2);
+        addButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent intent = new Intent(context, AddToiletActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
