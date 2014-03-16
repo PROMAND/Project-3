@@ -19,4 +19,3 @@
         android:layout_below="@+id/mapView" />
 
 </LinearLayout>
-

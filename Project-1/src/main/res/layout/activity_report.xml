@@ -13,11 +13,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/adressNameView"
+        android:id="@+id/TextView02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Test "
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="unknown"
+        android:textSize="20dip" >
+    </TextView>
 
     <TextView
         android:id="@+id/textViewSubject"

@@ -3,7 +3,6 @@ package pl.byd.wsg.promand.project1;
 /**
  * Created by Ksenija on 14/03/14.
  */
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
