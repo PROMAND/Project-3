@@ -1,6 +1,6 @@
 package pl.byd.wsg.promand.project1;
 
-
+import pl.byd.wsg.promand.project1.R;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.content.Context;
 import android.content.Intent;
+
+
 
 
 public class MainActivity extends ActionBarActivity {
