@@ -20,16 +20,7 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyA5tZNtgTbtmVlAx1u3rn47JPrMkp-kh2I"/>
         <activity
-            android:name="pl.byd.wsg.promand.project1.MainActivity"
-            android:label="Main Page" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="pl.byd.wsg.promand.project1.ActivityList"
-            android:label="List Test" >
+            android:name="pl.byd.wsg.promand.project1.ActivityList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
