@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">My Module</string>
+    <string name="app_name">WC-finding</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <color name="background">#F6F7F7</color>
+    <color name="background2">#ffdbd6d5</color>
+
+    <string name="babies">Babies</string>
+    <string name="showFilterText">what to show</string>
+    <string name="filterPriority">Priority to show</string>
+    <string name="payable">Payable</string>
+    <string name="forSpecialNeeds">Special Needs</string>
+    <string name="closest">Closest</string>
+
     <string name="addToilet">Add New Toilet</string>
     <string name="location">Location:</string>
     <string name="rating">Rating:</string>

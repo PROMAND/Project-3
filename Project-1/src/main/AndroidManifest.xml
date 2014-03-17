@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pl.byd.wsg.promand.project1" >
 
+    <activity android:name=".OrderScreen" />
+
     <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,26 +22,38 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyA5tZNtgTbtmVlAx1u3rn47JPrMkp-kh2I"/>
         <activity
-            android:name="pl.byd.wsg.promand.project1.MainActivity"
-            android:label="Main Page" >
+            android:name="pl.byd.wsg.promand.project1.ActivityList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="pl.byd.wsg.promand.project1.ActivityList"
-            android:label="List Test" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+    <activity
+        android:name="pl.byd.wsg.promand.project1.FilterActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
         <activity
             android:name="pl.byd.wsg.promand.project1.AddToiletActivity"
             android:label="Add Toilet" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pl.byd.wsg.promand.project1.ReportActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pl.byd.wsg.promand.project1.ProfileActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

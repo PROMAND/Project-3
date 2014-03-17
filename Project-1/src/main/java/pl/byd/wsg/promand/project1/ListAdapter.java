@@ -8,21 +8,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 public class ListAdapter extends ArrayAdapter<String> {
     private final Context context;
-    private final ArrayList<String> values;
-    private final ArrayList<Integer> stars;
-    private final ArrayList<Boolean> hoursfilter;
-    private final ArrayList<Boolean> moneyfilter;
-    private final ArrayList<Boolean> invalidfilter;
-    private final ArrayList<Boolean> babyfilter;
-    private final ArrayList<Boolean> commentfilter;
-    private final ArrayList<Boolean> photofilter;
+    private final String[] values;
+    private final int[] stars;
+    private final boolean[] hoursfilter;
+    private final boolean[] moneyfilter;
+    private final boolean[] invalidfilter;
+    private final boolean[] babyfilter;
+    private final boolean[] commentfilter;
+    private final boolean[] photofilter;
 
-    public ListAdapter(Context context, ArrayList<String> values,  ArrayList<Integer> stars, ArrayList<Boolean> hoursfilter, ArrayList<Boolean> moneyfilter,
-                       ArrayList<Boolean> invalidfilter, ArrayList<Boolean> babyfilter, ArrayList<Boolean> commentfilter, ArrayList<Boolean> photofilter) {
+    public ListAdapter(Context context, String[] values, int[] stars, boolean[] hoursfilter, boolean[] moneyfilter,
+                       boolean[] invalidfilter, boolean[] babyfilter, boolean[] commentfilter, boolean[] photofilter) {
         super(context, R.layout.list, values);
         this.context = context;
         this.values = values;
@@ -60,37 +58,38 @@ public class ListAdapter extends ArrayAdapter<String> {
         ImageView blocker = (ImageView) rowView.findViewById(R.id.hiddenFilterController);
 
 
-        textView.setText(values.get(position));
+        textView.setText(values[position]);
 
         // Change icon based on name
-        String s = values.get(position);
+        String s = values[position];
 
 
-        if(stars.get(position) == 1) {
+
+        if(stars[position] == 1) {
             star.setImageResource(R.drawable.star3);
             star2.setImageResource(R.drawable.emptystar2);
             star3.setImageResource(R.drawable.emptystar2);
             star4.setImageResource(R.drawable.emptystar2);
             star5.setImageResource(R.drawable.emptystar2);
-        } else if (stars.get(position) == 2) {
+        } else if (stars[position] == 2) {
             star.setImageResource(R.drawable.star3);
             star2.setImageResource(R.drawable.star3);
             star3.setImageResource(R.drawable.emptystar2);
             star4.setImageResource(R.drawable.emptystar2);
             star5.setImageResource(R.drawable.emptystar2);
-        } else if(stars.get(position) == 3) {
+        } else if(stars[position] == 3) {
             star.setImageResource(R.drawable.star3);
             star2.setImageResource(R.drawable.star3);
             star3.setImageResource(R.drawable.star3);
             star4.setImageResource(R.drawable.emptystar2);
             star5.setImageResource(R.drawable.emptystar2);
-        } else if(stars.get(position) == 4) {
+        } else if(stars[position] == 4) {
             star.setImageResource(R.drawable.star3);
             star2.setImageResource(R.drawable.star3);
             star3.setImageResource(R.drawable.star3);
             star4.setImageResource(R.drawable.star3);
             star5.setImageResource(R.drawable.emptystar2);
-        } else if(stars.get(position) == 5) {
+        } else if(stars[position] == 5) {
             star.setImageResource(R.drawable.star3);
             star2.setImageResource(R.drawable.star3);
             star3.setImageResource(R.drawable.star3);
@@ -132,32 +131,32 @@ public class ListAdapter extends ArrayAdapter<String> {
             number.setImageResource(R.drawable.number10);
         }
 
-        if ((hoursfilter.get(position)) == true) {
+        if ((hoursfilter[position]) == true) {
             hour.setImageResource(R.drawable.hoursbetter);
         } else {
             hour.setImageResource(R.drawable.hourscancelled);
         }
-        if ((moneyfilter.get(position)) == true) {
+        if ((moneyfilter[position]) == true) {
             euro.setImageResource(R.drawable.euro);
         } else {
             euro.setImageResource(R.drawable.eurocancelled);
         }
-        if ((invalidfilter.get(position)) == true) {
+        if ((invalidfilter[position]) == true) {
             invalid.setImageResource(R.drawable.invalid);
         } else {
             invalid.setImageResource(R.drawable.invalidcancelled);
         }
-        if ((babyfilter.get(position)) == true) {
+        if ((babyfilter[position]) == true) {
             baby.setImageResource(R.drawable.baby);
         } else {
             baby.setImageResource(R.drawable.babycancelled);
         }
-        if ((commentfilter.get(position)) == true) {
+        if ((commentfilter[position]) == true) {
            comment.setImageResource(R.drawable.comment);
         } else {
             comment.setImageResource(R.drawable.commentcancelled);
         }
-        if ((photofilter.get(position)) == true) {
+        if ((photofilter[position]) == true) {
             camera.setImageResource(R.drawable.camera);
         } else {
             camera.setImageResource(R.drawable.cameracancelled);

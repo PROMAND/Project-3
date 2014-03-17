@@ -5,18 +5,12 @@ package pl.byd.wsg.promand.project1;
  */
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import android.widget.TextView;
-import android.widget.Toast;
-import pl.byd.wsg.promand.project1.ActivityList;
 
 public class AddToiletActivity extends Activity {
 
@@ -33,7 +27,7 @@ public class AddToiletActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addpage);
+        setContentView(R.layout.activity_add);
 
 
         addListenerOnButton();
@@ -54,6 +48,7 @@ public class AddToiletActivity extends Activity {
 
         final Context context2 = this;
 
+        /*
         submit.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -90,9 +85,9 @@ public class AddToiletActivity extends Activity {
                     actList.addBabies(false);
                 }
 
-                    actList.addComment(true);
+                actList.addComment(true);
 
-                    actList.addPhoto(true);
+                actList.addPhoto(true);
 
 
                 Intent intent = new Intent(context2, ActivityList.class);
@@ -102,6 +97,7 @@ public class AddToiletActivity extends Activity {
 
         });
 
+*/
     }
 
 }
