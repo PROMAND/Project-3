@@ -1,0 +1,120 @@
+<RelativeLayout
+    android:color="#ffb0b0b0"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background2"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="1dp"
+    android:clickable="false">
+
+
+    <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="place holder header"
+        android:id="@+id/placeHolderHeader"
+
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/showFilterText"
+        android:id="@+id/textViewFilterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:singleLine="false"
+        android:gravity="center_horizontal" />
+
+
+    <CheckBox
+
+        android:id="@+id/filterShowBabies"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/babies"
+
+
+        android:background="@drawable/rectangle"
+        android:layout_marginTop="105dp"
+        android:textSize="20dp"
+        android:layout_alignParentTop="false"
+        android:paddingLeft="10dp" />
+    <CheckBox
+
+        android:id="@+id/filterShowSpecialNeeds"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/forSpecialNeeds"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/rectangle"
+        android:layout_marginTop="165dp"
+        android:textSize="20dp" />
+
+    <CheckBox
+
+        android:id="@+id/filterShowPayd"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/payable"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/rectangle"
+        android:layout_marginTop="225dp"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/filterPriority"
+        android:id="@+id/textViewShowText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="285dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:singleLine="false"
+        android:gravity="center_horizontal" />
+    <CheckBox
+
+        android:id="@+id/filterPriorityBabies"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/babies"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/rectangle"
+        android:layout_marginTop="320dp" />
+    <CheckBox
+
+        android:id="@+id/filterPrioritySpecialNeeds"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/forSpecialNeeds"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/rectangle"
+        android:layout_marginTop="380dp" />
+
+    <CheckBox
+        android:id="@+id/filterPriorityClosiest"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/closest"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="440dp"
+        android:background="@drawable/rectangle"
+        />
+
+
+</RelativeLayout>

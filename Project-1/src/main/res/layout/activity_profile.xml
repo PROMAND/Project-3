@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Address"
+            android:id="@+id/toiletAddress"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:singleLine="false" />
+
+        <ImageView
+            android:id="@+id/starempty"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/emptystar2"
+            android:layout_below="@+id/toiletAddress"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/starempty2"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/emptystar2"
+            android:layout_below="@+id/toiletAddress"
+            android:layout_toRightOf="@+id/starempty"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="3dp">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/starempty3"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/emptystar2"
+            android:layout_below="@+id/toiletAddress"
+            android:layout_toRightOf="@+id/starempty2"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="3dp">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/starempty4"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/emptystar2"
+            android:layout_below="@+id/toiletAddress"
+            android:layout_toRightOf="@+id/starempty3"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="3dp">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/starempty5"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/emptystar2"
+            android:layout_below="@+id/toiletAddress"
+            android:layout_toRightOf="@+id/starempty4"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="3dp">
+        </ImageView>
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/hour"
+            android:src="@drawable/hoursbetter"
+            android:layout_below="@+id/toiletAddress"
+            android:layout_alignLeft="@+id/starempty"
+            android:layout_marginTop="45dp" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/euro"
+            android:src="@drawable/euro"
+            android:layout_below="@+id/toiletAddress"
+            android:layout_toRightOf="@+id/hour"
+            android:layout_marginTop="45dp" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/invalid"
+            android:src="@drawable/invalid"
+            android:layout_below="@+id/toiletAddress"
+            android:layout_toRightOf="@+id/euro"
+            android:layout_marginTop="45dp" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/baby"
+            android:src="@drawable/baby"
+            android:layout_below="@+id/toiletAddress"
+            android:layout_toRightOf="@+id/invalid"
+            android:layout_marginTop="45dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Photo"
+            android:id="@+id/photoText"
+            android:layout_below="@+id/baby"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/photo"
+            android:layout_below="@+id/photoText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a photo"
+            android:id="@+id/btnadd"
+            android:layout_below="@+id/photo"
+            android:layout_centerHorizontal="true" />
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:id="@+id/report"
+            android:text="Report"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:ems="10"
+            android:id="@+id/nameText"
+            android:layout_below="@+id/photoText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="160dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Text"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_below="@+id/nameText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit comment"
+            android:id="@+id/btncomment"
+            android:layout_below="@+id/editText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="comment"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comments"
+            android:id="@+id/commenttext"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/btncomment" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:id="@+id/commentslist"
+            android:layout_below="@+id/commenttext"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            tools:listitem="@android:layout/simple_list_item_1" />
+
+    </RelativeLayout>
+</ScrollView>
