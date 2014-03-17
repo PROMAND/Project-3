@@ -64,6 +64,7 @@ public class ListAdapter extends ArrayAdapter<String> {
         String s = values[position];
 
 
+
         if(stars[position] == 1) {
             star.setImageResource(R.drawable.star3);
             star2.setImageResource(R.drawable.emptystar2);

@@ -75,6 +75,7 @@
         android:layout_marginLeft="3dp"
         android:src="@drawable/emptystar2"></ImageView>
 
+
     <ImageView
         android:id="@+id/arrow"
         android:layout_width="48dp"
