@@ -1,119 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:id="@+id/scrollView">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/background">
 
 
 
-<Button
 
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="place holder header"
-        android:id="@+id/placeHolderHeader"
+        android:id="@+id/filtername"
+        android:layout_alignParentTop="true"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:text="Filter Toilets"
+        android:background="#56749d"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp" />
 
 
-        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/showFilterText"
         android:id="@+id/textViewFilterText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="60dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textSize="30dp"
+        android:textSize="24sp"
         android:textAlignment="center"
-        android:singleLine="false"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/filtername"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"/>
 
 
     <CheckBox
 
         android:id="@+id/filterShowBabies"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:text="@string/babies"
-
-
-        android:background="@drawable/rectangle"
-        android:layout_marginTop="105dp"
-        android:textSize="20dp"
-        android:layout_alignParentTop="false"
-        android:paddingLeft="10dp" />
-    <CheckBox
-
-        android:id="@+id/filterShowSpecialNeeds"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="@string/forSpecialNeeds"
+        android:textSize="20sp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/rectangle"
-        android:layout_marginTop="165dp"
-        android:textSize="20dp" />
+        android:gravity="center"
+        android:layout_below="@+id/filterShowSpecialNeeds"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/buttonfilterunselected" />
+    <CheckBox
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/forSpecialNeeds"
+        android:background="@drawable/buttonfilterunselected"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:id="@+id/filterShowSpecialNeeds"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/filterShowPayd"
+        android:layout_marginBottom="5dp" />
 
     <CheckBox
 
         android:id="@+id/filterShowPayd"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:text="@string/payable"
+        android:background="@drawable/buttonfilterunselected"
+        android:textSize="20sp"
+        android:gravity="center"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/rectangle"
-        android:layout_marginTop="225dp"
-        android:textSize="20dp" />
+        android:layout_below="@+id/filterShowHours"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp" />
+
+    <CheckBox
+        android:id="@+id/filterShowHours"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/hours"
+        android:background="@drawable/buttonfilterunselected"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewFilterText"
+        android:layout_marginBottom="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/filterPriority"
         android:id="@+id/textViewShowText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="285dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textSize="30dp"
+        android:textSize="24sp"
         android:textAlignment="center"
         android:singleLine="false"
-        android:gravity="center_horizontal" />
-    <CheckBox
-
-        android:id="@+id/filterPriorityBabies"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="@string/babies"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="false"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/rectangle"
-        android:layout_marginTop="320dp" />
-    <CheckBox
+        android:layout_alignParentStart="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/filterShowBabies"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp" />
 
-        android:id="@+id/filterPrioritySpecialNeeds"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="@string/forSpecialNeeds"
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewShowText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/rectangle"
-        android:layout_marginTop="380dp" />
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:id="@+id/radioGroup">
 
-    <CheckBox
-        android:id="@+id/filterPriorityClosiest"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="@string/closest"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="440dp"
-        android:background="@drawable/rectangle"
-        />
+        <RadioButton
+            android:id="@+id/radioLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/radio_location"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/radioHours"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/radio_hours"
+            android:checked="false" />
+
+        <RadioButton
+            android:id="@+id/radioPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/radio_payment" />
+
+        <RadioButton
+            android:id="@+id/radioInvalid"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/radio_invalid"
+            android:checked="false" />
+
+        <RadioButton
+            android:id="@+id/radioBabies"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/radio_babies" />
+
+        </RadioGroup>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:textColor="#F5F5F5"
+        android:textSize="20sp"
+        android:background="@drawable/buttontwocurves"
+        android:shadowColor="#1F1F1F"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="0.7"
+        android:textStyle="bold|italic"
+        android:layout_below="@+id/radioGroup"
+        android:layout_marginBottom="10dp" />
 
 
 </RelativeLayout>
+
+</ScrollView>

@@ -8,22 +8,28 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 public class ReportActivity extends ActionBarActivity {
 
     Button buttonSend;
     EditText textSubject;
     EditText textMessage;
+    private Spinner spinner;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
+        addListenerOnSpinnerItemSelection();
+
         buttonSend = (Button) findViewById(R.id.buttonSend);
-        textSubject = (EditText) findViewById(R.id.editTextSubject);
         textMessage = (EditText) findViewById(R.id.editTextMessage);
 
         buttonSend.setOnClickListener(new OnClickListener() {
@@ -47,5 +53,10 @@ public class ReportActivity extends ActionBarActivity {
 
             }
         });
+    }
+
+    public void addListenerOnSpinnerItemSelection() {
+        spinner = (Spinner) findViewById(R.id.spinner);
+
     }
 }

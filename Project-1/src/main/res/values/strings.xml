@@ -7,11 +7,12 @@
     <color name="background">#F6F7F7</color>
     <color name="background2">#ffdbd6d5</color>
 
-    <string name="babies">Babies</string>
-    <string name="showFilterText">what to show</string>
-    <string name="filterPriority">Priority to show</string>
-    <string name="payable">Payable</string>
+    <string name="babies">Suitable for babies</string>
+    <string name="showFilterText">Filter from list:</string>
+    <string name="filterPriority">Order by:</string>
+    <string name="payable">Requires payment</string>
     <string name="forSpecialNeeds">Special Needs</string>
+    <string name="hours">Open 24/7</string>
     <string name="closest">Closest</string>
 
     <string name="addToilet">Add New Toilet</string>
@@ -25,5 +26,22 @@
     <string name="invalidCheck">Invalid friendly</string>
     <string name="babyCheck">Suitable for Babies</string>
     <string name="BigAddress">Address</string>
+
+    <string name="reportreason">Select Reason:</string>
+    <string-array name="reason_array">
+        <item>Choose a reason</item>
+        <item>Toilet does not exist</item>
+        <item>Wrong address</item>
+        <item>Information is wrong</item>
+        <item>Comments are spam/harassment</item>
+        <item>Picture is incorrect</item>
+        <item>Something else</item>
+    </string-array>
+
+    <string name="radio_hours">Open 24/7</string>
+    <string name="radio_payment">Payment</string>
+    <string name="radio_invalid">Suitable for special needs</string>
+    <string name="radio_babies">Suitable for babies</string>
+    <string name="radio_location">Only location</string>
 
 </resources>
