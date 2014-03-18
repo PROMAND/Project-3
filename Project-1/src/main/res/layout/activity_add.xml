@@ -3,7 +3,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background">
 
 
     <TextView
@@ -19,7 +20,9 @@
         android:layout_alignParentStart="true"
         android:textAlignment="center"
         android:gravity="center_horizontal"
-        android:text="@string/addToilet" />
+        android:text="@string/addToilet"
+        android:background="#56749d"
+        android:autoText="false" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +74,16 @@
         android:id="@+id/submit"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp" />
+        android:layout_marginBottom="15dp"
+        android:textColor="#F5F5F5"
+        android:textSize="18sp"
+        android:background="@drawable/buttontwocurves"
+        android:shadowColor="#1F1F1F"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="0.7"
+        android:padding="5dp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,10 +91,10 @@
         android:text="@string/comment"
         android:id="@+id/comment"
         android:textSize="16dp"
-        android:layout_alignBaseline="@+id/editText"
-        android:layout_alignBottom="@+id/editText"
         android:layout_alignLeft="@+id/rating"
-        android:layout_alignStart="@+id/rating" />
+        android:layout_alignStart="@+id/rating"
+        android:layout_alignTop="@+id/editText"
+        android:layout_marginRight="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -93,7 +105,9 @@
         android:layout_above="@+id/submit"
         android:layout_alignRight="@+id/ratingBar"
         android:layout_alignEnd="@+id/ratingBar"
-        android:layout_marginBottom="34dp" />
+        android:layout_marginBottom="34dp"
+        android:layout_toRightOf="@+id/comment"
+        android:background="@drawable/abc_ab_bottom_solid_light_holo" />
 
     <TableLayout
         android:layout_width="fill_parent"
@@ -101,8 +115,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/rating"
-        android:layout_marginTop="10dp"
-        android:layout_above="@+id/comment">
+        android:layout_marginTop="15dp"
+        android:layout_above="@+id/comment"
+        android:gravity="center_horizontal">
 
 
 
@@ -111,19 +126,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dip"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/hoursCheck"
                 android:id="@+id/checkBox"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                android:textSize="15sp" />
 
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/moneyCheck"
-                android:id="@+id/checkBox2" />
+                android:id="@+id/checkBox2"
+                android:textSize="15sp" />
 
         </TableRow>
 
@@ -132,20 +150,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dip"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/invalidCheck"
                 android:id="@+id/checkBox3"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                android:textSize="15sp" />
 
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/babyCheck"
                 android:id="@+id/checkBox4"
-                android:textSize="16dp" />
+                android:textSize="15sp" />
 
         </TableRow>
 

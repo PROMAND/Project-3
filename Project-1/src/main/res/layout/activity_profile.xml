@@ -10,6 +10,7 @@
         android:orientation="horizontal"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
+        android:background="@drawable/background"
         >
 
 
@@ -136,13 +137,29 @@
             android:text="Add a photo"
             android:id="@+id/btnadd"
             android:layout_below="@+id/photo"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:textColor="#F5F5F5"
+            android:textSize="20sp"
+            android:background="@drawable/buttontwocurves"
+            android:shadowColor="#1F1F1F"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="0.7"
+            android:textStyle="bold|italic" />
         <Button
             android:layout_width="100dp"
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:id="@+id/report"
-            android:text="Report"/>
+            android:text="Report"
+            android:textColor="#F5F5F5"
+            android:textSize="20sp"
+            android:background="@drawable/buttontwocurves"
+            android:shadowColor="#1F1F1F"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="0.7"
+            android:textStyle="bold|italic"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -154,7 +171,8 @@
             android:layout_below="@+id/photoText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="160dp"/>
+            android:layout_marginTop="175dp"
+            android:layout_marginBottom="5dp" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -165,7 +183,8 @@
             android:id="@+id/editText"
             android:layout_below="@+id/nameText"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="5dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -175,7 +194,16 @@
             android:layout_below="@+id/editText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:onClick="comment"/>
+            android:onClick="comment"
+            android:textColor="#F5F5F5"
+            android:textSize="20sp"
+            android:background="@drawable/buttontwocurves"
+            android:shadowColor="#1F1F1F"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="0.7"
+            android:textStyle="bold|italic"
+            android:padding="10dp" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -5,6 +5,7 @@ package pl.byd.wsg.promand.project1;
  */
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class AddToiletActivity extends Activity {
     private CheckBox invalid;
     private CheckBox baby;
     ActivityList actList = new ActivityList();
+    private Typeface newFont;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

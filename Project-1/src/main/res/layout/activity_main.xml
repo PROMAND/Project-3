@@ -1,26 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
     android:orientation="vertical"
+    android:background="@drawable/background"
     >
 
     <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="40dp">
+        android:layout_height="50dp"
+        android:id="@+id/tableLayout"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-       <TableRow>
+       <TableRow android:layout_width="fill_parent"
+           android:layout_height="fill_parent"
+           android:layout_gravity="center_horizontal"
+           android:gravity="center_horizontal">
            <Button
-               android:layout_width="150dp"
+               android:layout_width="fill_parent"
                android:id="@+id/filters"
                android:text="Filters"
-               android:layout_height="40dp"/>
+               android:layout_height="40dp"
+               android:textColor="#F5F5F5"
+               android:textSize="20sp"
+               android:background="@drawable/buttontwocurves"
+               android:shadowColor="#1F1F1F"
+               android:shadowDx="2"
+               android:shadowDy="2"
+               android:shadowRadius="0.7"
+               android:layout_marginRight="3dp"
+               android:textStyle="bold|italic" />
            <Button
-               android:layout_width="150dp"
+               android:layout_width="fill_parent"
                android:id="@+id/add"
-               android:text="Add"
-               android:layout_height="40dp"/>
+               android:text="Add Toilet"
+               android:layout_height="40dp"
+               android:textColor="#F5F5F5"
+               android:textSize="20sp"
+               android:background="@drawable/buttontwocurves"
+               android:shadowColor="#1F1F1F"
+               android:shadowDx="2"
+               android:shadowDy="2"
+               android:shadowRadius="0.7"
+               android:layout_marginLeft="3dp"
+               android:layout_gravity="right"
+               android:textStyle="bold|italic" />
        </TableRow>
 
     </TableLayout>
@@ -30,7 +58,8 @@
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@+id/addButton2" />
+        android:layout_below="@+id/tableLayout"
+        tools:layout="@layout/fragment_main" />
 
     <ListView
         android:layout_width="fill_parent"
@@ -38,19 +67,31 @@
         android:id="@+id/myList"
         android:layout_below="@+id/map" />
 
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add"
-        android:id="@+id/addButton2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:id="@+id/imageView"
+        android:src="@drawable/toiletlogo"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="-5dp"
-        android:layout_marginRight="-5dp"
-        android:layout_marginBottom="-5dp"
-        android:singleLine="false"
-        android:drawableRight="@drawable/toilet" />
+        android:layout_marginBottom="10dp" />
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/imageView2"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:src="@drawable/toiletroll" />
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/imageView3"
+        android:layout_alignBottom="@+id/imageView"
+        android:src="@drawable/toiletroll"
+        android:layout_toLeftOf="@+id/imageView" />
 
 </RelativeLayout>
 
