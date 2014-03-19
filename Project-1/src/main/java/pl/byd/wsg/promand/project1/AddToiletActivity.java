@@ -4,14 +4,25 @@ package pl.byd.wsg.promand.project1;
  * Created by Tommy on 16.3.2014.
  */
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RatingBar;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class AddToiletActivity extends Activity {
 
@@ -24,6 +35,10 @@ public class AddToiletActivity extends Activity {
     private CheckBox baby;
     ActivityList actList = new ActivityList();
     private Typeface newFont;
+    private EditText result;
+    private Button btngetAddress;
+    private Context context=null;
+    private ProgressDialog dialog = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,11 +46,60 @@ public class AddToiletActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-
         addListenerOnButton();
 
+        context=this;
+
+        result=(EditText)findViewById(R.id.locationHolder);
+
+        dialog = ProgressDialog.show(context, "","Please wait..", true);
+        GetCurrentAddress currentadd=new GetCurrentAddress();
+        currentadd.execute();
     }
 
+    public  String getAddress(Context ctx, double latitude, double longitude) {
+        StringBuilder result = new StringBuilder();
+
+        try {
+            Geocoder geocoder = new Geocoder(ctx, Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            if (addresses.size() > 0) {
+
+                String address_ = addresses.get(0).getAddressLine(0);
+                String city_ = addresses.get(0).getAddressLine(1);
+                String country_ = addresses.get(0).getAddressLine(2);
+
+                result.append(address_+" ");
+                result.append(city_+" ");
+                result.append(country_);
+
+            }
+        } catch (IOException e) {
+            Log.e("tag", e.getMessage());
+        }
+
+        return result.toString();
+    }
+
+    private class GetCurrentAddress extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... urls) {
+            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            double longitude = location.getLongitude();
+            double latitude = location.getLatitude();
+            String address=	getAddress(context, latitude, longitude);
+            return address;
+        }
+
+        @Override
+        protected void onPostExecute(String resultString) {
+            dialog.dismiss();
+            result.setText(resultString);
+
+        }
+    }
 
     public void addListenerOnButton() {
 

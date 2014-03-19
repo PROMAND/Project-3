@@ -13,6 +13,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+
 
 public class ActivityList extends Activity {
     private final String TAG = "MyActivity";
@@ -26,11 +29,14 @@ public class ActivityList extends Activity {
     private boolean[] commentfilter = new boolean[]{false, true, true, false, false, true, true, false, true, false};
     private boolean[] photofilter = new boolean[]{true, false, false, false, true, true, true, true, false, true};
 
+    private GoogleMap map;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ListView listView = (ListView) findViewById(R.id.myList);
         ListAdapter adapter = new ListAdapter(this, values, stars, hoursfilter, moneyfilter, invalidfilter, babyfilter, commentfilter, photofilter);
         listView.setAdapter(adapter);
@@ -70,5 +76,8 @@ public class ActivityList extends Activity {
             }
         });
 
+        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        map.setMyLocationEnabled(true);
     }
 }
+

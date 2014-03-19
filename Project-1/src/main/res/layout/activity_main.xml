@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@+id/tableLayout"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main"/>
 
     <ListView
         android:layout_width="fill_parent"

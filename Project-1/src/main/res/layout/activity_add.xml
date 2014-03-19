@@ -35,15 +35,19 @@
         android:layout_marginLeft="10dp"
         android:textSize="16dp" />
 
+
     <EditText
+        android:id="@+id/locationHolder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/locationHolder"
-        android:text=""
+        android:ems="10"
         android:layout_above="@+id/rating"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/location" />
+        android:layout_toRightOf="@+id/location" >
+
+        <requestFocus />
+    </EditText>
 
     <TextView
         android:layout_width="wrap_content"
