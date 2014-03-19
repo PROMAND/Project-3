@@ -1,11 +1,11 @@
 package pl.byd.wsg.promand.project1;
 
-/**
- * Created by Tommy on 13.3.2014.
- */
-
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -58,26 +58,54 @@ public class ActivityList extends Activity {
 
         });
 
-        Button startPlaying = (Button) findViewById(R.id.filters);
+        Button filterButton = (Button) findViewById(R.id.filters);
 
-        startPlaying.setOnClickListener(new View.OnClickListener(){
+        filterButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), FilterActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), FilterActivity.class);
+                    startActivity(intent);
             }
         });
+
+        
 
         Button addButton = (Button) findViewById(R.id.add);
 
         addButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), AddToiletActivity.class);
-                startActivity(intent);
+
+                final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+
+                if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+                    buildAlertMessageNoGps();
+                }
+                else{
+                    Intent intent = new Intent(getApplicationContext(), AddToiletActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
         map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         map.setMyLocationEnabled(true);
+    }
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
     }
 }
 
