@@ -1,8 +1,5 @@
 package pl.byd.wsg.promand.project1;
 
-/**
- * Created by Ksenija on 14/03/14.
- */
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -27,10 +24,9 @@ public class ReportActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
-        addListenerOnSpinnerItemSelection();
-
         buttonSend = (Button) findViewById(R.id.buttonSend);
         textMessage = (EditText) findViewById(R.id.editTextMessage);
+        textSubject = (EditText)findViewById(R.id.adressView);
 
         buttonSend.setOnClickListener(new OnClickListener() {
 
@@ -53,10 +49,5 @@ public class ReportActivity extends ActionBarActivity {
 
             }
         });
-    }
-
-    public void addListenerOnSpinnerItemSelection() {
-        spinner = (Spinner) findViewById(R.id.spinner);
-
     }
 }

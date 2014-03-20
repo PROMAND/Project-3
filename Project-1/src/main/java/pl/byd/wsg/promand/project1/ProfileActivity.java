@@ -5,16 +5,21 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ProfileActivity extends Activity {
     private static ArrayList<String> comments = new ArrayList<String>();
@@ -25,26 +30,28 @@ public class ProfileActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        /*comments.clear();
         comments.add("By Charles - Great toilet!");
         comments.add("By Laura - Very clean");
-        comments.add("By Richard - I recommend this toilet");
+        comments.add("By Richard - I recommend this toilet");*/
         Bundle extras = getIntent().getExtras();
 
         String tempAddress = extras.getString("tempAddress");
         int tempStars = extras.getInt("tempStars");
-        boolean tempHoursFilter = extras.getBoolean("tempHoursFilter");
-        boolean tempMoneyFilter = extras.getBoolean("tempMoneyFilter");
-        boolean tempInvalidFilter = extras.getBoolean("tempInvalidFilter");
-        boolean tempBabyFilter = extras.getBoolean("tempBabyFilter");
-        boolean tempCommentFilter = extras.getBoolean("tempCommentFilter");
-        boolean tempPhotoFilter = extras.getBoolean("tempPhotoFilter");
+        int tempHoursFilter = extras.getInt("tempHoursFilter");
+        int tempMoneyFilter = extras.getInt("tempMoneyFilter");
+        int tempInvalidFilter = extras.getInt("tempInvalidFilter");
+        int tempBabyFilter = extras.getInt("tempBabyFilter");
+        int tempCommentFilter = extras.getInt("tempCommentFilter");
+        int tempPhotoFilter = extras.getInt("tempPhotoFilter");
 
         TextView txt = (TextView) this.findViewById(R.id.toiletAddress);
-        ImageView star = (ImageView) this.findViewById(R.id.starempty);
+        final RatingBar ratingBar = (RatingBar) this.findViewById(R.id.ratingBar);
+        /*ImageView star = (ImageView) this.findViewById(R.id.starempty);
         ImageView star2 = (ImageView) this.findViewById(R.id.starempty2);
         ImageView star3 = (ImageView) this.findViewById(R.id.starempty3);
         ImageView star4 = (ImageView) this.findViewById(R.id.starempty4);
-        ImageView star5 = (ImageView) this.findViewById(R.id.starempty5);
+        ImageView star5 = (ImageView) this.findViewById(R.id.starempty5);*/
         ImageView hour = (ImageView) this.findViewById(R.id.hour);
         ImageView euro = (ImageView) this.findViewById(R.id.euro);
         ImageView invalid = (ImageView) this.findViewById(R.id.invalid);
@@ -55,64 +62,40 @@ public class ProfileActivity extends Activity {
         txt.setText(tempAddress);
 
         if(tempStars == 1) {
-            star.setImageResource(R.drawable.star3);
-            star2.setImageResource(R.drawable.emptystar2);
-            star3.setImageResource(R.drawable.emptystar2);
-            star4.setImageResource(R.drawable.emptystar2);
-            star5.setImageResource(R.drawable.emptystar2);
+            ratingBar.setRating(1);
         } else if (tempStars == 2) {
-            star.setImageResource(R.drawable.star3);
-            star2.setImageResource(R.drawable.star3);
-            star3.setImageResource(R.drawable.emptystar2);
-            star4.setImageResource(R.drawable.emptystar2);
-            star5.setImageResource(R.drawable.emptystar2);
+            ratingBar.setRating(2);
         } else if(tempStars == 3) {
-            star.setImageResource(R.drawable.star3);
-            star2.setImageResource(R.drawable.star3);
-            star3.setImageResource(R.drawable.star3);
-            star4.setImageResource(R.drawable.emptystar2);
-            star5.setImageResource(R.drawable.emptystar2);
+            ratingBar.setRating(3);
         } else if(tempStars == 4) {
-            star.setImageResource(R.drawable.star3);
-            star2.setImageResource(R.drawable.star3);
-            star3.setImageResource(R.drawable.star3);
-            star4.setImageResource(R.drawable.star3);
-            star5.setImageResource(R.drawable.emptystar2);
+            ratingBar.setRating(4);
         } else if(tempStars == 5) {
-            star.setImageResource(R.drawable.star3);
-            star2.setImageResource(R.drawable.star3);
-            star3.setImageResource(R.drawable.star3);
-            star4.setImageResource(R.drawable.star3);
-            star5.setImageResource(R.drawable.star3);
+            ratingBar.setRating(5);
         }  else {
-            star.setImageResource(R.drawable.emptystar2);
-            star2.setImageResource(R.drawable.emptystar2);
-            star3.setImageResource(R.drawable.emptystar2);
-            star4.setImageResource(R.drawable.emptystar2);
-            star5.setImageResource(R.drawable.emptystar2);
+            ratingBar.setRating(0);
         }
 
-        if (tempHoursFilter) {
+        if (tempHoursFilter==1) {
             hour.setImageResource(R.drawable.hoursbetter);
         } else {
             hour.setImageResource(R.drawable.hourscancelled);
         }
-        if (tempMoneyFilter) {
+        if (tempMoneyFilter==1) {
             euro.setImageResource(R.drawable.euro);
         } else {
             euro.setImageResource(R.drawable.eurocancelled);
         }
-        if (tempInvalidFilter) {
+        if (tempInvalidFilter==1) {
             invalid.setImageResource(R.drawable.invalid);
         } else {
             invalid.setImageResource(R.drawable.invalidcancelled);
         }
-        if (tempBabyFilter) {
+        if (tempBabyFilter==1) {
             baby.setImageResource(R.drawable.baby);
         } else {
             baby.setImageResource(R.drawable.babycancelled);
         }
-        if (tempPhotoFilter) {
+        if (tempPhotoFilter==1) {
             photo.setImageResource(R.drawable.toiletexample);
             Button btn = (Button) this.findViewById(R.id.btnadd);
             btn.setVisibility(View.GONE);
@@ -122,10 +105,18 @@ public class ProfileActivity extends Activity {
             photoTxt.setText("No photo");
         }
 
-        if(tempCommentFilter) {
+        if(tempCommentFilter==1) {
             ListView listView = (ListView)this.findViewById(R.id.commentslist);
             listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, comments);
             listView.setAdapter(listAdapter);
+            ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) listView.getLayoutParams();
+            Collections.reverse(comments);
+            for(int i=0; i<comments.size(); i++) {
+                listView = (ListView)this.findViewById(R.id.commentslist);
+                //Toast.makeText(ProfileActivity.this, ""+listView.getHeight(), Toast.LENGTH_LONG).show();
+                lp.height = lp.height+75;
+            }
+            listView.setLayoutParams(lp);
             //listAdapter.notifyDataSetChanged();
         } else {
             TextView commentsTxt = (TextView) this.findViewById(R.id.commenttext);
@@ -142,19 +133,30 @@ public class ProfileActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        final Button voteButton = (Button) findViewById(R.id.vote);
+
+        voteButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                ratingBar.setEnabled(false);
+                voteButton.setEnabled(false);
+                int tempVote = (int)ratingBar.getRating();
+                Toast.makeText(ProfileActivity.this, "Vote submitted "+tempVote, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    /*@TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void setupActionBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
-    /*
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -178,17 +180,50 @@ public class ProfileActivity extends Activity {
     */
 
     public void comment(View button) {
-        EditText editName = (EditText)this.findViewById(R.id.nameText);
-        EditText editText = (EditText)this.findViewById(R.id.editText);
+        button.setEnabled(false);
+        TextView commentsTxt = (TextView) this.findViewById(R.id.commenttext);
+        String noComments = commentsTxt.getText().toString();
+        if((noComments!=null) && (noComments.equals("No comments"))) {
+            ListView commentsList = (ListView)this.findViewById(R.id.commentslist);
+            listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, comments);
+            commentsList.setAdapter(listAdapter);
 
-        String name = editName.getText().toString();
-        String comment = editText.getText().toString();
+            commentsTxt.setText("Comments");
+            commentsList.setVisibility(View.VISIBLE);
+            EditText editName = (EditText)this.findViewById(R.id.nameText);
+            EditText editText = (EditText)this.findViewById(R.id.editText);
 
-        String done = "By "+name+" - "+comment;
+            String name = editName.getText().toString();
+            String comment = editText.getText().toString();
 
-        comments.add(done);
-        editName.setText("");
-        editText.setText("");
-        listAdapter.notifyDataSetChanged();
+            String done = "By "+name+" - "+comment;
+            //Toast.makeText(this, done, Toast.LENGTH_LONG).show();
+            comments.add(done);
+            editName.setText("");
+            editText.setText("");
+            listAdapter.notifyDataSetChanged();
+            ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) commentsList.getLayoutParams();
+            lp.height = commentsList.getHeight()+75;
+            commentsList.setLayoutParams(lp);
+            Toast.makeText(ProfileActivity.this, "Comment added", Toast.LENGTH_LONG).show();
+        } else {
+            ListView commentsList = (ListView)this.findViewById(R.id.commentslist);
+            EditText editName = (EditText)this.findViewById(R.id.nameText);
+            EditText editText = (EditText)this.findViewById(R.id.editText);
+
+            String name = editName.getText().toString();
+            String comment = editText.getText().toString();
+
+            String done = "By "+name+" - "+comment;
+
+            comments.add(done);
+            editName.setText("");
+            editText.setText("");
+            listAdapter.notifyDataSetChanged();
+            ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) commentsList.getLayoutParams();
+            lp.height = commentsList.getHeight()+75;
+            commentsList.setLayoutParams(lp);
+            Toast.makeText(ProfileActivity.this, "Comment added", Toast.LENGTH_LONG).show();
+        }
     }
 }
