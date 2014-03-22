@@ -39,6 +39,7 @@ import com.google.android.gms.maps.MapFragment;
 public class ActivityList extends ActionBarActivity {
 
     private GoogleMap map;
+    private ArrayList<Integer> ids = new ArrayList<Integer>();
     private ArrayList<String> values = new ArrayList<String>();
     private ArrayList<Integer> stars = new ArrayList<Integer>();
     private ArrayList<Integer> hoursfilter = new ArrayList<Integer>();
@@ -93,6 +94,7 @@ public class ActivityList extends ActionBarActivity {
             public void onItemClick(AdapterView<?> av, View v, final int position, long id) {
                 Intent in = new Intent(getApplicationContext(), ProfileActivity.class);
                 in.putExtra("tempAddress", values.get(position));
+                in.putExtra("tempID", ids.get(position));
                 in.putExtra("tempStars", stars.get(position));
                 in.putExtra("tempHoursFilter", hoursfilter.get(position));
                 in.putExtra("tempMoneyFilter", moneyfilter.get(position));
@@ -214,6 +216,7 @@ public class ActivityList extends ActionBarActivity {
             for (JSONGeoname result : parsedResults) {
                 result.rating = new Random().nextInt(6);
                 values.add(result.address);
+                ids.add(result._ID);
                 stars.add(result.rating);
                 hoursfilter.add(result.workingTime);
                 moneyfilter.add(result.payable);

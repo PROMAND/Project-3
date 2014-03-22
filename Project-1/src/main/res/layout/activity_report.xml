@@ -33,17 +33,29 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginBottom="5dp" />
 
-    <EditText
-        android:id="@+id/adressView"
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:lines="2"
-        android:background="@drawable/abc_ab_bottom_solid_light_holo"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" />
+        android:text="unknown"
+        android:textSize="20dip"
+        android:layout_marginBottom="5dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textViewSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reason: "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:entries="@array/reason_array"
+        android:prompt="@string/reportreason"
+        android:spinnerMode="dropdown" />
 
     <TextView
         android:id="@+id/textViewMessage"

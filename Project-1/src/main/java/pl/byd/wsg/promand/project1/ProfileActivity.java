@@ -3,8 +3,10 @@ package pl.byd.wsg.promand.project1;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,25 +20,55 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class ProfileActivity extends Activity {
     private static ArrayList<String> comments = new ArrayList<String>();
     private ArrayAdapter<String> listAdapter;
+    private int tempID;
+
+    public int getTempID() {
+        return tempID;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
         /*comments.clear();
         comments.add("By Charles - Great toilet!");
         comments.add("By Laura - Very clean");
         comments.add("By Richard - I recommend this toilet");*/
+        comments.clear();
+        final String url = "http://promand.comoj.com/index.php?action=GetEntireTable&tablename=comments&api_key=4dbdb6281eda089ac926b65179ff4c29e417f6ec";
+
+        new fetchData().execute(url);
         Bundle extras = getIntent().getExtras();
 
         String tempAddress = extras.getString("tempAddress");
+        tempID = extras.getInt("tempID");
         int tempStars = extras.getInt("tempStars");
         int tempHoursFilter = extras.getInt("tempHoursFilter");
         int tempMoneyFilter = extras.getInt("tempMoneyFilter");
@@ -110,10 +142,10 @@ public class ProfileActivity extends Activity {
             listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, comments);
             listView.setAdapter(listAdapter);
             ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) listView.getLayoutParams();
-            Collections.reverse(comments);
+            //Collections.reverse(comments);
             for(int i=0; i<comments.size(); i++) {
                 listView = (ListView)this.findViewById(R.id.commentslist);
-                //Toast.makeText(ProfileActivity.this, ""+listView.getHeight(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(ProfileActivity.this, comments.size()+" "+listView.getHeight(), Toast.LENGTH_LONG).show();
                 lp.height = lp.height+75;
             }
             listView.setLayoutParams(lp);
@@ -141,9 +173,29 @@ public class ProfileActivity extends Activity {
                 ratingBar.setEnabled(false);
                 voteButton.setEnabled(false);
                 int tempVote = (int)ratingBar.getRating();
-                Toast.makeText(ProfileActivity.this, "Vote submitted "+tempVote, Toast.LENGTH_LONG).show();
+
+                HttpParams httpParams = new BasicHttpParams();
+                HttpClient client = new DefaultHttpClient(httpParams);
+
+                final String insertRating = "http://promand.comoj.com/index.php?action=insertRating&rating="+tempVote+"&_toiletID="+tempID+"&api_key=4dbdb6281eda089ac926b65179ff4c29e417f6ec";
+                HttpPost request = new HttpPost(insertRating);
+                try {
+                    HttpResponse response = client.execute(request);
+                    Toast.makeText(ProfileActivity.this, "Vote submitted "+tempVote+"/5", Toast.LENGTH_LONG).show();
+                } catch (IOException e) {
+                    Toast.makeText(ProfileActivity.this, "Failed to insert Rating", Toast.LENGTH_LONG).show();
+                }
             }
         });
+        /*ListView listView = (ListView)this.findViewById(R.id.commentslist);
+        ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) listView.getLayoutParams();
+        //Collections.reverse(comments);
+        for(int i=0; i<comments.size(); i++) {
+            listView = (ListView)this.findViewById(R.id.commentslist);
+            Toast.makeText(ProfileActivity.this, comments.size()+" "+listView.getHeight(), Toast.LENGTH_LONG).show();
+            lp.height = lp.height+75;
+        }
+        listView.setLayoutParams(lp);*/
     }
 
     /**
@@ -197,16 +249,28 @@ public class ProfileActivity extends Activity {
             String comment = editText.getText().toString();
 
             String done = "By "+name+" - "+comment;
+            done = done.replaceAll(" ", "+");
+            HttpParams httpParams = new BasicHttpParams();
+
+            HttpClient client = new DefaultHttpClient(httpParams);
+            final String addComment= "http://promand.comoj.com/index.php?action=insertcomment&comment="+done+"&_toiletID="+getTempID()+"&api_key=4dbdb6281eda089ac926b65179ff4c29e417f6ec";
+            HttpPost request = new HttpPost(addComment);
+            try {
+                HttpResponse response = client.execute(request);
+                comments.add(done);
+                editName.setText("");
+                editText.setText("");
+                listAdapter.notifyDataSetChanged();
+                ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) commentsList.getLayoutParams();
+                lp.height = commentsList.getHeight()+150;
+                commentsList.setLayoutParams(lp);
+                Toast.makeText(ProfileActivity.this, "Comment added", Toast.LENGTH_LONG).show();
+            } catch(IOException e){
+                Toast.makeText(ProfileActivity.this, "FailComment", Toast.LENGTH_SHORT).show();
+            }
             //Toast.makeText(this, done, Toast.LENGTH_LONG).show();
-            comments.add(done);
-            editName.setText("");
-            editText.setText("");
-            listAdapter.notifyDataSetChanged();
-            ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) commentsList.getLayoutParams();
-            lp.height = commentsList.getHeight()+75;
-            commentsList.setLayoutParams(lp);
-            Toast.makeText(ProfileActivity.this, "Comment added", Toast.LENGTH_LONG).show();
         } else {
+
             ListView commentsList = (ListView)this.findViewById(R.id.commentslist);
             EditText editName = (EditText)this.findViewById(R.id.nameText);
             EditText editText = (EditText)this.findViewById(R.id.editText);
@@ -215,15 +279,102 @@ public class ProfileActivity extends Activity {
             String comment = editText.getText().toString();
 
             String done = "By "+name+" - "+comment;
+            String donePHP = done.replaceAll(" ", "+");
+            HttpParams httpParams = new BasicHttpParams();
 
-            comments.add(done);
-            editName.setText("");
-            editText.setText("");
+            HttpClient client = new DefaultHttpClient(httpParams);
+            final String addComment= "http://promand.comoj.com/index.php?action=insertcomment&comment="+donePHP+"&_toiletID="+getTempID()+"&api_key=4dbdb6281eda089ac926b65179ff4c29e417f6ec";
+            HttpPost request = new HttpPost(addComment);
+            try {
+                HttpResponse response = client.execute(request);
+                comments.add(done);
+                editName.setText("");
+                editText.setText("");
+                listAdapter.notifyDataSetChanged();
+                ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) commentsList.getLayoutParams();
+                for(int i=0; i<comments.size(); i++) {
+                    //Toast.makeText(ProfileActivity.this, comments.size()+" "+listView.getHeight(), Toast.LENGTH_LONG).show();
+                    lp.height = lp.height+75;
+                }
+                commentsList.setLayoutParams(lp);
+                Toast.makeText(ProfileActivity.this, "Comment added", Toast.LENGTH_LONG).show();
+            } catch(IOException e){
+                Toast.makeText(ProfileActivity.this, "FailComment", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    public void showJSON(View button) {//<--- needed
+        // the url we'll be getting the data from
+        // we'll be filtering by a few parameters the webserver expects
+        final String url = "http://promand.comoj.com/index.php?action=GetEntireTable&tablename=comments&api_key=4dbdb6281eda089ac926b65179ff4c29e417f6ec";
+
+        new fetchData().execute(url);
+    }
+
+    class fetchData extends AsyncTask<String, Void, JSONResponse> {//< backtoundas
+        private Exception exception;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            Toast.makeText(ProfileActivity.this, "Pre execution", Toast.LENGTH_SHORT).show();
+        }
+
+        protected JSONResponse doInBackground(String... urls) {
+            try {
+                InputStream source = null;
+
+                // fetch the data from the URL
+                HttpResponse reply = new DefaultHttpClient().execute(new HttpGet(urls[0]));
+
+                // determine the HTTP status code
+                final int replyStatus = reply.getStatusLine().getStatusCode();
+
+                // we got an error back from the server or maybe the connection is down
+                if (replyStatus != HttpStatus.SC_OK) {
+                    exception = new Exception("HTTP");
+                    return null;
+                }
+
+                // if the HTTP request was successful
+                // get the contents of the reply
+                source = reply.getEntity().getContent();
+
+                // read the JSON string that came as a reply
+                Reader reader = new InputStreamReader(source);
+
+                // our JSON helper parser instance reads the string
+                // formatting it to our Java equivalent
+                return new Gson().fromJson(reader, JSONResponse.class);
+            } catch (Exception e) {
+                this.exception = e;
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(JSONResponse parsedResponse) {//<<----list view creation
+            Toast.makeText(ProfileActivity.this, "Finished Async", Toast.LENGTH_SHORT).show();
+
+
+            if (exception != null) {
+            }
+
+            // creating a list of all Geonames found
+            List<JSONGeoname> parsedResults = parsedResponse.groceries;
+
+
+            //faking the rating with random numbers
+            for (JSONGeoname result : parsedResults) {
+                if(result._toiletID==getTempID()) {
+                    comments.add(result.comment);
+                    //Toast.makeText(ProfileActivity.this, result._toiletID+""+getTempID(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            Collections.reverse(comments);
             listAdapter.notifyDataSetChanged();
-            ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) commentsList.getLayoutParams();
-            lp.height = commentsList.getHeight()+75;
-            commentsList.setLayoutParams(lp);
-            Toast.makeText(ProfileActivity.this, "Comment added", Toast.LENGTH_LONG).show();
         }
     }
 }

@@ -15,4 +15,6 @@ public class JSONGeoname {
     public double longitude;
     public int IsComment;
     public int rating;
+    public String comment;
+    public int  _toiletID;
 }

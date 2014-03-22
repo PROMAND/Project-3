@@ -13,9 +13,9 @@ import android.widget.Spinner;
 public class ReportActivity extends ActionBarActivity {
 
     Button buttonSend;
-    EditText textSubject;
     EditText textMessage;
     private Spinner spinner;
+
 
 
     @Override
@@ -26,7 +26,7 @@ public class ReportActivity extends ActionBarActivity {
 
         buttonSend = (Button) findViewById(R.id.buttonSend);
         textMessage = (EditText) findViewById(R.id.editTextMessage);
-        textSubject = (EditText)findViewById(R.id.adressView);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
         buttonSend.setOnClickListener(new OnClickListener() {
 
@@ -34,7 +34,7 @@ public class ReportActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 String to = "ksenijasuvorova@gmail.com";
-                String subject = textSubject.getText().toString();
+                String subject = spinner.getSelectedItem().toString();
                 String message = textMessage.getText().toString();
 
                 Intent email = new Intent(Intent.ACTION_SEND);
@@ -49,5 +49,9 @@ public class ReportActivity extends ActionBarActivity {
 
             }
         });
+    }
+    public void addListenerOnSpinnerItemSelection() {
+        spinner = (Spinner) findViewById(R.id.spinner);
+
     }
 }
